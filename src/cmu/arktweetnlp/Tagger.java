@@ -47,6 +47,10 @@ public class Tagger {
 	public static class TaggedToken {
 		public String token;
 		public String tag;
+		@Override
+		public String toString() {
+			return token + "/" + tag;
+		}
 	}
 
 
