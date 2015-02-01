@@ -44,9 +44,13 @@ public class Tagger {
 	/**
 	 * One token and its tag.
 	 **/
-	public static class TaggedToken {
+	public final class TaggedToken {
 		public String token;
 		public String tag;
+		public TaggedToken(String token, String tag) {
+		  this.token = token;
+		  this.tag = tag;
+		}
 		@Override
 		public String toString() {
 			return token + "/" + tag;
@@ -70,9 +74,7 @@ public class Tagger {
 		ArrayList<TaggedToken> taggedTokens = new ArrayList<TaggedToken>();
 
 		for (int t=0; t < sentence.T(); t++) {
-			TaggedToken tt = new TaggedToken();
-			tt.token = tokens.get(t);
-			tt.tag = model.labelVocab.name( ms.labels[t] );
+			TaggedToken tt = new TaggedToken(tokens.get(t), model.labelVocab.name( ms.labels[t] ));
 			taggedTokens.add(tt);
 		}
 
