@@ -44,7 +44,7 @@ public class Tagger {
 	/**
 	 * One token and its tag.
 	 **/
-	public final class TaggedToken {
+	public static final class TaggedToken {
 		public String token;
 		public String tag;
 		public TaggedToken(String token, String tag) {
