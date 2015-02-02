@@ -3,6 +3,7 @@ package cmu.arktweetnlp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +45,8 @@ public class Tagger {
 	/**
 	 * One token and its tag.
 	 **/
-	public static final class TaggedToken {
+	public static final class TaggedToken implements Serializable {
+		private static final long serialVersionUID = 8995921534802114075L;
 		public String token;
 		public String tag;
 		public TaggedToken(String token, String tag) {
