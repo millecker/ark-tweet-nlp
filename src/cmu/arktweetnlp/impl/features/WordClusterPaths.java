@@ -21,7 +21,7 @@ public class WordClusterPaths implements FeatureExtractorInterface, Serializable
 	/** TODO this should be moved into config somehow **/
 	public static String clusterResourceName = "/cmu/arktweetnlp/50mpaths2";
 	
-	public static HashMap<String,String> wordToPath;
+	public HashMap<String,String> wordToPath;
 
 	public WordClusterPaths() throws IOException {
 //		log.info("Loading clusters");

@@ -48,8 +48,6 @@ public class RunTagger {
 	PrintStream outputStream;
 	Iterable<Sentence> inputIterable = null;
 	
-	// Evaluation stuff
-	private static HashSet<String> _wordsInCluster;
 	// Only for evaluation mode (conll inputs)
 	int numTokensCorrect = 0;
 	int numTokens = 0;
@@ -202,16 +200,6 @@ public class RunTagger {
 		}		*/
 	}
 	
-	private void evaluateOOV(Sentence lSent, ModelSentence mSent) throws FileNotFoundException, IOException, ClassNotFoundException {
-		for (int t=0; t < mSent.T; t++) {
-			int trueLabel = tagger.model.labelVocab.num(lSent.labels.get(t));
-			int predLabel = mSent.labels[t];
-			if(wordsInCluster().contains(lSent.tokens.get(t))){
-				oovTokensCorrect += (trueLabel == predLabel) ? 1 : 0;
-				oovTokens += 1;
-			}
-		}
-    }
 	private void getconfusion(Sentence lSent, ModelSentence mSent, int[][] confusion) {
 		for (int t=0; t < mSent.T; t++) {
 			int trueLabel = tagger.model.labelVocab.num(lSent.labels.get(t));
@@ -438,11 +426,5 @@ public class RunTagger {
 			System.out.println("ERROR: " + extra);
 		}
 		System.exit(1);
-	}
-	public static HashSet<String> wordsInCluster() {
-		if (_wordsInCluster==null) {
-			_wordsInCluster = new HashSet<String>(WordClusterPaths.wordToPath.keySet());
-		}
-		return _wordsInCluster;
 	}
 }
