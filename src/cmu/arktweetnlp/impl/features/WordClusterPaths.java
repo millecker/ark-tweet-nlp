@@ -2,6 +2,7 @@ package cmu.arktweetnlp.impl.features;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -15,7 +16,7 @@ import edu.stanford.nlp.util.StringUtils;
 /**
  * Brown word clusters: features are path prefixes down the tree. 
  **/
-public class WordClusterPaths implements FeatureExtractorInterface {
+public class WordClusterPaths implements FeatureExtractorInterface, Serializable  {
 	
 	/** TODO this should be moved into config somehow **/
 	public static String clusterResourceName = "/cmu/arktweetnlp/50mpaths2";

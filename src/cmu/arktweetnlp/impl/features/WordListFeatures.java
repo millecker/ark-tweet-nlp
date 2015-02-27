@@ -2,6 +2,7 @@ package cmu.arktweetnlp.impl.features;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +15,7 @@ import cmu.arktweetnlp.util.BasicFileIO;
 
 public class WordListFeatures {
 
-	public static class POSTagDict implements FeatureExtractorInterface {
+	public static class POSTagDict implements FeatureExtractorInterface, Serializable  {
 		Pattern URL = Pattern.compile(Twokenize.url);
 		Pattern letter = Pattern.compile("[A-Za-z]{3,}");
 		public void addFeatures(List<String> tokens, PositionFeaturePairs pairs) {
@@ -56,7 +57,7 @@ public class WordListFeatures {
 	 * If you add a new list, make sure to run "mvn install -q" so it's copied
 	 * to the target folder or else you'll get a null pointer exception
 	 */
-	public static class Listofnames implements FeatureExtractorInterface {
+	public static class Listofnames implements FeatureExtractorInterface, Serializable {
 		String Listname="";
 		HashSet<String> members;
 		public Listofnames(String str) throws IOException {
@@ -74,7 +75,7 @@ public class WordListFeatures {
 		}
 	}
 
-	public static class MetaphonePOSDict implements FeatureExtractorInterface {
+	public static class MetaphonePOSDict implements FeatureExtractorInterface, Serializable {
 		public void addFeatures(List<String> tokens, PositionFeaturePairs pairs) {
 			for (int t=0; t < tokens.size(); t++) {
 				String tok = tokens.get(t);

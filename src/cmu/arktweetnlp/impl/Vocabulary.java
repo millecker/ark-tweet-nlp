@@ -1,12 +1,13 @@
 package cmu.arktweetnlp.impl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.berkeley.nlp.util.StringUtils;
 
 /** Could scrap this and use ark-regression's version -- that one has CheapStrings **/
-public class Vocabulary {
+public class Vocabulary implements Serializable {
 
 	private HashMap<String,Integer> name2num;
 	private ArrayList<String> num2name;

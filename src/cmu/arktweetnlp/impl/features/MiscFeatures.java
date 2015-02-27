@@ -1,5 +1,6 @@
 package cmu.arktweetnlp.impl.features;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -10,7 +11,7 @@ import cmu.arktweetnlp.impl.features.FeatureExtractor.PositionFeaturePairs;
 
 public class MiscFeatures {
 	
-	public static class NextWord implements FeatureExtractorInterface{
+	public static class NextWord implements FeatureExtractorInterface, Serializable {
 		public void addFeatures(List<String> tokens, PositionFeaturePairs pairs) {
 			ArrayList<String> normtoks = FeatureUtil.normalize(tokens);
 			for (int t=0; t < tokens.size()-1; t++) {
@@ -22,7 +23,7 @@ public class MiscFeatures {
 			pairs.add(tokens.size()-1, "nextword|<END>");
 		}
 	}
-	public static class Next2Words implements FeatureExtractorInterface{
+	public static class Next2Words implements FeatureExtractorInterface, Serializable {
 		public void addFeatures(List<String> tokens, PositionFeaturePairs pairs) {
 			if (tokens.size()>1){
 				ArrayList<String> normtoks = FeatureUtil.normalize(tokens);
@@ -36,7 +37,7 @@ public class MiscFeatures {
 			}
 		}
 	}
-	public static class PrevWord implements FeatureExtractorInterface{
+	public static class PrevWord implements FeatureExtractorInterface, Serializable {
 		public void addFeatures(List<String> tokens, PositionFeaturePairs pairs) {
 			ArrayList<String> normtoks = FeatureUtil.normalize(tokens);
 			pairs.add(0, "prevword|<START>");
@@ -49,7 +50,7 @@ public class MiscFeatures {
 			}
 		}
 	}
-	public static class Prev2Words implements FeatureExtractorInterface{
+	public static class Prev2Words implements FeatureExtractorInterface, Serializable {
 		public void addFeatures(List<String> tokens, PositionFeaturePairs pairs) { 	
 			if (tokens.size()>1){
 				ArrayList<String> normtoks = FeatureUtil.normalize(tokens);
@@ -61,7 +62,7 @@ public class MiscFeatures {
 			}
 		}
 	}
-	public static class PrevNext implements FeatureExtractorInterface{
+	public static class PrevNext implements FeatureExtractorInterface, Serializable {
 		public void addFeatures(List<String> tokens, PositionFeaturePairs pairs) {
 			ArrayList<String> normtoks = FeatureUtil.normalize(tokens);
 			if (tokens.size()>1){
@@ -77,7 +78,7 @@ public class MiscFeatures {
 		}
 	}
 
-	public static class CapitalizationFeatures implements FeatureExtractorInterface {	
+	public static class CapitalizationFeatures implements FeatureExtractorInterface, Serializable {	
 		public void addFeatures(List<String> tokens, PositionFeaturePairs pairs) {
 			for (int t=0; t < tokens.size(); t++) {
 				String tok = tokens.get(t);
@@ -116,7 +117,7 @@ public class MiscFeatures {
 			}
 		}
 	}
-	public static class SimpleOrthFeatures implements FeatureExtractorInterface {
+	public static class SimpleOrthFeatures implements FeatureExtractorInterface, Serializable {
 		public Pattern hasDigit = Pattern.compile("[0-9]");
 		/** TODO change to punctuation class, or better from Twokenize **/
 		//Pattern allPunct = Pattern.compile("^[^a-zA-Z0-9]*$");
@@ -153,7 +154,7 @@ public class MiscFeatures {
 			}
 		}    
 	}
-	public static class URLFeatures implements FeatureExtractorInterface {	
+	public static class URLFeatures implements FeatureExtractorInterface, Serializable {	
 		Pattern validURL = Pattern.compile(Twokenize.url);
 		Pattern validEmail = Pattern.compile(Twokenize.Email);
 		public void addFeatures(List<String> tokens, PositionFeaturePairs pairs) {
@@ -168,7 +169,7 @@ public class MiscFeatures {
 			}
 		}
 	}
-	public static class WordformFeatures implements FeatureExtractorInterface {
+	public static class WordformFeatures implements FeatureExtractorInterface, Serializable {
 		public void addFeatures(List<String> tokens, PositionFeaturePairs pairs) {
 			for (int t=0; t < tokens.size(); t++) {
 				String tok = tokens.get(t);
@@ -192,7 +193,7 @@ public class MiscFeatures {
 			return sb.toString();
 		}
 	}
-	public static class NgramPrefix implements FeatureExtractorInterface {
+	public static class NgramPrefix implements FeatureExtractorInterface, Serializable {
 		int ngram=3;
 		public NgramPrefix(int i) {
 			ngram=i;
@@ -210,7 +211,7 @@ public class MiscFeatures {
 			}
 		}
 	}
-	public static class NgramSuffix implements FeatureExtractorInterface {
+	public static class NgramSuffix implements FeatureExtractorInterface, Serializable {
 		int ngram=3;
 		public NgramSuffix(int i) {
 			ngram=i;
@@ -230,7 +231,7 @@ public class MiscFeatures {
 			}
 		}    
 	}
-	public static class Positions implements FeatureExtractorInterface {	
+	public static class Positions implements FeatureExtractorInterface, Serializable {	
 		public void addFeatures(List<String> tokens, PositionFeaturePairs pairs) {
 			for (int t=0; t < Math.min(tokens.size(), 4); t++) {
 				pairs.add(t, "t="+t);

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -20,7 +21,7 @@ import edu.stanford.nlp.util.Pair;
  * (2) Model coefficients (and knowledge how to flattenize them for LBFGS's sake)
  * (3) Decoding/posterior and gradient computation
  */
-public class Model {
+public class Model implements Serializable {
 	public Vocabulary labelVocab;
 	public Vocabulary featureVocab;
 

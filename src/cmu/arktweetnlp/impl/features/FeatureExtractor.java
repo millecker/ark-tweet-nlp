@@ -1,6 +1,7 @@
 package cmu.arktweetnlp.impl.features;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -15,7 +16,7 @@ import edu.stanford.nlp.util.Pair;
  * Extracts features and numberizes them
  * Also numberizes other things if necessary (e.g. label numberizations for MEMM training)
  */
-public class FeatureExtractor {
+public class FeatureExtractor implements Serializable {
 
 	/** Only use the model for vocabulary and dimensionality info. **/
 	private Model model;
